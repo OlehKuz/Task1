@@ -29,5 +29,4 @@ public class FreightWagon extends Wagon {
                 "', volume capacity m3 = '" + getVolumeCapacity()+
                 "', "+ super.toString() + "}";
     }
-
 }

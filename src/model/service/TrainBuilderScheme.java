@@ -10,7 +10,6 @@ public enum TrainBuilderScheme {
     PASSENGER_FAST_TRAIN(PASSENGER_LOCOMOTIVE.getRailwayVehicle(), CARRIAGE_SEATING1.getRailwayVehicle(),CARRIAGE_SEATING2.getRailwayVehicle()),
     FREIGHT_TRAIN(PASSENGER_LOCOMOTIVE.getRailwayVehicle(),FREIGHT_WAGON.getRailwayVehicle());
 
-
     private RailwayVehicle[] trainScheme;
 
     TrainBuilderScheme(RailwayVehicle...vehicles){
