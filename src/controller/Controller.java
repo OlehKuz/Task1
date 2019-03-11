@@ -4,7 +4,6 @@ import model.entity.*;
 import model.service.DBVehicleTypes;
 import model.service.TrainService;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -19,12 +18,17 @@ public class Controller {
         List<RailwayVehicle> trainBuildingScheme = Arrays.asList(trainService.getTrainBuildingScheme(PASSENGER_SLEEPING_TRAIN));
         Train builtTrain = trainService.constructTrain(trainBuildingScheme);
         System.out.println(builtTrain);
+        //builtTrain.setWagons(trainService.filterCarriage(builtTrain));
         int numberPassengers = trainService.getNumberPassengers(builtTrain);
         int numberLuggage = trainService.getNumberLuggage(builtTrain);
         System.out.println("Our PASSENGER_SLEEPING_TRAIN has this number of passengers: " + numberPassengers +
                 " and this number of luggage compartments " + numberLuggage);
-        System.out.println("Lets filter our wagons by passenger capacity 36. Lower bound included");
-        trainService.filterByNumberPassengers(builtTrain, 36);
+        System.out.println("Lets filter our wagons by level of comfort");
+        trainService.sortWagonsByComfort(builtTrain);
+        System.out.println(builtTrain);
+
+        System.out.println("Lets filter our wagons by passenger capacity 54. Lower bound included");
+        trainService.filterByNumberPassengers(builtTrain, 54);
         System.out.println(builtTrain);
 
     }

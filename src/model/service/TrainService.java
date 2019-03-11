@@ -54,12 +54,22 @@ public class TrainService {
         train.setWagons(filtered);
     }
 
-//    public void sortWagonsByComfort(Train train){
-//        List<RailwayVehicle> comfort = train.getWagons()
+    public void sortWagonsByComfort(Train train){
+        List<RailwayVehicle> comfort = train.getWagons()
+                .stream()
+                .filter(railwayVehicle -> railwayVehicle instanceof  Carriage)
+                .sorted(Comparator.comparing(railwayVehicle -> ((Carriage) railwayVehicle).getCarriageType()))
+                .collect(Collectors.toList());
+        train.setWagons(comfort);
+    }
+//
+//    public List<Carriage> filterCarriage(Train train){
+//        List<Carriage> filtered = train.getWagons()
 //                .stream()
 //                .filter(railwayVehicle -> railwayVehicle instanceof  Carriage)
-//                .sorted(Comparator.comparing((Carriage)this.getCarriageType()))
+//                .map(railwayVehicle -> (Carriage)railwayVehicle)
 //                .collect(Collectors.toList());
+//        return filtered;
 //    }
 
 }

@@ -1,7 +1,5 @@
 package model.entity;
-import model.service.TrainService;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Train extends RailwayVehicle{
