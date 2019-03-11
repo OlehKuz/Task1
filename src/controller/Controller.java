@@ -16,8 +16,12 @@ public class Controller {
         System.out.println("Lets construct a PASSENGER_SLEEPING_TRAIN");
 
         TrainService trainService = new TrainService();
-        RailwayVehicle[] trainBuildingScheme = trainService.getTrainBuildingScheme(PASSENGER_SLEEPING_TRAIN);
-        Train builtTrain = trainService.constructTrain(Arrays.asList(trainBuildingScheme));
-        trainService.printConstuctedTrain(builtTrain);
+        List<RailwayVehicle> trainBuildingScheme = Arrays.asList(trainService.getTrainBuildingScheme(PASSENGER_SLEEPING_TRAIN));
+        Train builtTrain = trainService.constructTrain(trainBuildingScheme);
+        System.out.println(builtTrain);
+        int numberPassengers = trainService.getNumberPassengers(builtTrain);
+        int numberLuggage = trainService.getNumberLuggage(builtTrain);
+        System.out.println("Our PASSENGER_SLEEPING_TRAIN has this number of passengers: " + numberPassengers +
+                " and this number of luggage compartments " + numberLuggage);
     }
 }

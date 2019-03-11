@@ -66,10 +66,11 @@ public class Carriage extends Wagon {
 
     @Override
     public String toString() {
-        return "Carriage{" +
+        return "\nCarriage{" +
                 "carriage type = '" + carriageType +
                 "', passengerCapacity = '" + passengerCapacity+
                 "', number of luggage compartments = '" + luggageCapacity +
                 "', "+ super.toString() + "}";
+
     }
 }

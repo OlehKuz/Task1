@@ -12,26 +12,41 @@ public class TrainService {
     }
 
     public Train constructTrain(List <RailwayVehicle> trainConstructionScheme) {
+
         Set<RailwayVehicle> trainParts = new HashSet<>(trainConstructionScheme);
         RailwayVehicle[] trainUnderConstruction = new RailwayVehicle[trainConstructionScheme.size()];
 
-        for(DBVehicleTypes vehicle: DBVehicleTypes.values()){
-            if(trainParts.contains(vehicle.getRailwayVehicle())){
+        Arrays.asList(DBVehicleTypes.values()).forEach(vehicleType->{
+            if(trainParts.contains(vehicleType.getRailwayVehicle())){
                 trainUnderConstruction[trainConstructionScheme.
-                        indexOf(vehicle.getRailwayVehicle())] = vehicle.getRailwayVehicle();
+                        indexOf(vehicleType.getRailwayVehicle())] = vehicleType.getRailwayVehicle();
             }
-        }
+        });
         return new Train(trainUnderConstruction[0].getTrackSize(),trainUnderConstruction[0].getFunction(),
-                trainUnderConstruction);
+                Arrays.asList(trainUnderConstruction));
 
     }
 
-    public void printConstuctedTrain(Train train){
+    public int getNumberPassengers(Train train){
+        int numberPassengers = train.getWagons()
+                .stream()
+                .filter(railwayVehicle -> railwayVehicle instanceof  Carriage)
+                .mapToInt(railwayVehicle ->((Carriage) railwayVehicle).getPassengerCapacity())
+                .sum();
+        return numberPassengers;
+    }
 
-        RailwayVehicle[] trainPart = train.getTrainParts();
-        for(RailwayVehicle v: trainPart){
-            System.out.println(v);
-        }
+    public int getNumberLuggage(Train train){
+        int numberLuggage = train.getWagons()
+                .stream()
+                .filter(railwayVehicle -> railwayVehicle instanceof  Carriage)
+                .mapToInt(railwayVehicle ->((Carriage) railwayVehicle).getLuggageCapacity())
+                .sum();
+        return numberLuggage;
+    }
+
+    public void sortWagonsByComfort(Train train){
+
     }
 
 
