@@ -28,7 +28,7 @@ public class Carriage extends Wagon {
             case Berth: return 54;
             case Seating1Class:
             case Seating2Class: return 56;
-            default: return 56;
+            default: throw new IllegalArgumentException();
         }
     }
 
@@ -39,7 +39,7 @@ public class Carriage extends Wagon {
             case Berth: return 27;
             case Seating1Class: return 50;
             case Seating2Class: return 42;
-            default: return 42;
+            default: throw new IllegalArgumentException();
         }
     }
 

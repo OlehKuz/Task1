@@ -4,6 +4,7 @@ public class FreightWagon extends Wagon {
     public enum FreightType {Coal, Metal}
     private final FreightType freightType;
     private int volumeCapacity;
+
     public FreightWagon(TrackSize trackSize, FreightType freightType, int volumeCapacity){
         super(Function.Freight, trackSize);
         this.freightType = freightType;
