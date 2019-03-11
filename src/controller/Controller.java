@@ -23,5 +23,9 @@ public class Controller {
         int numberLuggage = trainService.getNumberLuggage(builtTrain);
         System.out.println("Our PASSENGER_SLEEPING_TRAIN has this number of passengers: " + numberPassengers +
                 " and this number of luggage compartments " + numberLuggage);
+        System.out.println("Lets filter our wagons by passenger capacity 36. Lower bound included");
+        trainService.filterByNumberPassengers(builtTrain, 36);
+        System.out.println(builtTrain);
+
     }
 }

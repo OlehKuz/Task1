@@ -1,7 +1,7 @@
 package model.entity;
 
 public class Carriage extends Wagon {
-    public enum CarriageType {DeLuxe, Compartment, Berth, Seating1Class, Seating2Class}
+    public enum CarriageType {DeLuxe, Compartment, Seating1Class, Seating2Class, Berth}
     private final CarriageType carriageType;
     private int passengerCapacity;
     private int luggageCapacity;

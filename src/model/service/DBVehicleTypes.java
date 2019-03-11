@@ -10,7 +10,7 @@ public enum DBVehicleTypes {
     CARRIAGE_SEATING2(new Carriage(TrackSize.EURO_TRACK, Carriage.CarriageType.Seating2Class)),
     CARRIAGE_SEATING1(new Carriage(TrackSize.EURO_TRACK, Carriage.CarriageType.Seating1Class)),
     CARRIAGE_BERTH(new Carriage(TrackSize.EURO_TRACK, Carriage.CarriageType.Berth)),
-    CARRIAGE_COMPARTMENT(new Carriage(TrackSize.EURO_TRACK, Carriage.CarriageType.Compartment)),
+    CARRIAGE_COMPARTMENT(new Carriage(TrackSize.EASTERN_TRACK, Carriage.CarriageType.Compartment)),
     CARRIAGE_LUX(new Carriage(TrackSize.EURO_TRACK, Carriage.CarriageType.DeLuxe));
 
     private RailwayVehicle railwayVehicle;
