@@ -28,21 +28,20 @@ public class TrainService {
     }
 
     public int getNumberPassengers(Train train){
-        int numberPassengers = train.getWagons()
+        return  train.getWagons()
                 .stream()
                 .filter(railwayVehicle -> railwayVehicle instanceof  Carriage)
                 .mapToInt(railwayVehicle ->((Carriage) railwayVehicle).getPassengerCapacity())
                 .sum();
-        return numberPassengers;
+
     }
 
     public int getNumberLuggage(Train train){
-        int numberLuggage = train.getWagons()
+        return train.getWagons()
                 .stream()
                 .filter(railwayVehicle -> railwayVehicle instanceof  Carriage)
                 .mapToInt(railwayVehicle ->((Carriage) railwayVehicle).getLuggageCapacity())
                 .sum();
-        return numberLuggage;
     }
 
     public void filterByNumberPassengers(Train train, int number){

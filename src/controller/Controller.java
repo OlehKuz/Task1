@@ -3,31 +3,42 @@ package controller;
 import model.entity.*;
 import model.service.DBVehicleTypes;
 import model.service.TrainService;
+import view.View;
+
+import static view.TextConstant.*;
+import static view.View.bundle;
+
 
 import java.util.Arrays;
 import java.util.List;
 
 import static model.service.TrainBuilderScheme.*;
 
-public class Controller {
+public class Controller{
     public void run(){
-        System.out.println("I have this number of railway vehicles in my garage: "+ DBVehicleTypes.values().length );
-        System.out.println("Lets construct a PASSENGER_SLEEPING_TRAIN");
+        View view = new View();
+        System.out.println(bundle.getString(NUMBER_VEHICLES) + DBVehicleTypes.values().length );
+        System.out.println(bundle.getString(LETS_CONSTRUCT));
 
         TrainService trainService = new TrainService();
         List<RailwayVehicle> trainBuildingScheme = Arrays.asList(trainService.getTrainBuildingScheme(PASSENGER_SLEEPING_TRAIN));
         Train builtTrain = trainService.constructTrain(trainBuildingScheme);
         System.out.println(builtTrain);
+        System.out.println();
+
         //builtTrain.setWagons(trainService.filterCarriage(builtTrain));
         int numberPassengers = trainService.getNumberPassengers(builtTrain);
         int numberLuggage = trainService.getNumberLuggage(builtTrain);
-        System.out.println("Our PASSENGER_SLEEPING_TRAIN has this number of passengers: " + numberPassengers +
-                " and this number of luggage compartments " + numberLuggage);
-        System.out.println("Lets filter our wagons by level of comfort");
+        view.printMessage(NUMBER_PASSENGERS + numberPassengers +
+                NUMBER_LUGGAGE+ numberLuggage);
+        System.out.println();
+
+        view.printMessage(FILTER_WAGONS_COMFORT);
         trainService.sortWagonsByComfort(builtTrain);
         System.out.println(builtTrain);
+        System.out.println();
 
-        System.out.println("Lets filter our wagons by passenger capacity 54. Lower bound included");
+        view.printMessage(FILTER_WAGONS_PASSENGERS);
         trainService.filterByNumberPassengers(builtTrain, 54);
         System.out.println(builtTrain);
 
