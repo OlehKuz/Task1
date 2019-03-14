@@ -17,8 +17,8 @@ import static model.service.TrainBuilderScheme.*;
 public class Controller{
     public void run(){
         View view = new View();
-        System.out.println(bundle.getString(NUMBER_VEHICLES) + DBVehicleTypes.values().length );
-        System.out.println(bundle.getString(LETS_CONSTRUCT));
+        view.printMessage(bundle.getString(NUMBER_VEHICLES) + DBVehicleTypes.values().length );
+        view.printMessage(bundle.getString(LETS_CONSTRUCT));
 
         TrainService trainService = new TrainService();
         List<RailwayVehicle> trainBuildingScheme = Arrays.asList(trainService.getTrainBuildingScheme(PASSENGER_SLEEPING_TRAIN));
@@ -29,16 +29,16 @@ public class Controller{
         //builtTrain.setWagons(trainService.filterCarriage(builtTrain));
         int numberPassengers = trainService.getNumberPassengers(builtTrain);
         int numberLuggage = trainService.getNumberLuggage(builtTrain);
-        view.printMessage(NUMBER_PASSENGERS + numberPassengers +
-                NUMBER_LUGGAGE+ numberLuggage);
+        view.printMessage(bundle.getString(NUMBER_PASSENGERS) + numberPassengers +
+                bundle.getString(NUMBER_LUGGAGE)+ numberLuggage);
         System.out.println();
 
-        view.printMessage(FILTER_WAGONS_COMFORT);
+        view.printMessage(bundle.getString(FILTER_WAGONS_COMFORT));
         trainService.sortWagonsByComfort(builtTrain);
         System.out.println(builtTrain);
         System.out.println();
 
-        view.printMessage(FILTER_WAGONS_PASSENGERS);
+        view.printMessage(bundle.getString(FILTER_WAGONS_PASSENGERS));
         trainService.filterByNumberPassengers(builtTrain, 54);
         System.out.println(builtTrain);
 

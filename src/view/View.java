@@ -14,24 +14,10 @@ public class View {
                     new Locale("ua", "UA"));  // Ukrainian
                     //new Locale("en"));        // English
 
-    //Utilities methods
-    /**
-     *
-     * @param message
-     */
-    /*public void printMessage(String message){
+    public void printMessage(String message){
         System.out.println(message);
-    }*/
-    public void printMessage(String message) {
-        Optional<String> mess = Optional.ofNullable(message);
-        mess.ifPresent(x->System.out.println(this.unwrapBundled(x)));
+
     }
-    public String unwrapBundled(String message){ //TODO very wrong!
-        for (String key : bundle.keySet()){
-            if(message.contains(key)){
-                message = message.replaceAll(key,bundle.getString(key));
-            }
- }
-        return message;
-  }
+    //button1 = new Button(myResources.getString("OkKey"));
+
 }
